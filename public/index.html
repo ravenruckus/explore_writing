@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Emotional Tone</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script defer src="js/index.js"></script>
+        <script defer src="js/test_data.js"></script>
+        
+    </head>
+
+    <body>
+       
+         <div class="container">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Explore Writing</h1>
+                    <p class="lead">Explore the emotional tones of your writing by entering text in the text box below and hitting analyze. IBM Watson's Tone Analyzer will score your text based on the emotional content. </p>
+                </div>
+            </div>
+            
+            <section class="row">
+                
+                <div class="col-md-3"id="watsonData"></div>
+
+                <div class="col-md-5">
+                    <canvas id="myChart" width="200" height="200"></canvas>
+                </div>
+                
+                <div class="col-md-4" id="textareaData"></div>
+            </section>
+
+
+            <div clss="row">
+                       
+            <form class='col-md-12'>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Enter your text here.</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Analyze</button>
+            </form>
+
+            </div>
+
+        </div>        
+
+        <!-- <form>
+            <button id="testButton" style="margin-top: 15px;">Test For formating of data</button>
+        </form> -->
+
+    </body>
+</html>
