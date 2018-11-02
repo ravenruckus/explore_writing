@@ -5,8 +5,9 @@
     $("#testButton").on('click', function() {
         event.preventDefault()
         const ctx = $("#myChart")
-
-
+        $("#document_tones").removeClass('hide')
+        $("#sentenceData").removeClass('hide')
+    
         const options = {
             contentType: 'application/json',
             dataType: 'json',
