@@ -1,6 +1,9 @@
 'use strict';
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
+  
 const express = require('express');
 const app = express();
 const fs = require('fs')
@@ -46,10 +49,11 @@ app.get('/api/test_json', (req, res, next) => {
     const jsonData = JSON.parse(fs.readFileSync('data/data.json'))
     //sending back emotional tone for document
     const documentTones = jsonData.document_tone.tone_categories[0] 
+    const sentences = jsonData.sentences_tone
     
-    console.log(documentTones)
+    console.log([documentTones, sentences])
 
-    res.send(documentTones)
+    res.send([documentTones, sentences])
 })
 
 app.use((_req, res) => {

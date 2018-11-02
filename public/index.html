@@ -17,22 +17,25 @@
     <body>
        
          <div class="container">
-            <div class="jumbotron jumbotron-fluid">
+            <!-- <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h1 class="display-4">Explore Writing</h1>
                     <p class="lead">Explore the emotional tones of your writing by entering text in the text box below and hitting analyze. IBM Watson's Tone Analyzer will score your text based on the emotional content. </p>
                 </div>
-            </div>
+            </div> -->
             
             <section class="row">
                 
-                <div class="col-md-3"id="watsonData"></div>
-
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <canvas id="myChart" width="200" height="200"></canvas>
                 </div>
+
+                <div class="col-md-8" id="sentenceData">
+                    <canvas id="sentenceChart" width="200" height="200"></canvas>
+                </div>
                 
-                <div class="col-md-4" id="textareaData"></div>
+                <!-- <div class="col-md-8" id="textareaData"></div> -->
+
             </section>
 
 
@@ -50,9 +53,9 @@
 
         </div>        
 
-        <!-- <form>
+        <form>
             <button id="testButton" style="margin-top: 15px;">Test For formating of data</button>
-        </form> -->
+        </form>
 
     </body>
 </html>
