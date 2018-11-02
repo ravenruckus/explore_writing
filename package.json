@@ -5,6 +5,7 @@
   "author": "Alicia Gyori <gyorihome@hotmail.com>",
   "license": "MIT",
   "scripts": {
+    "nf": "nf start",
     "start": "nodemon server.js"
   },
   "dependencies": {
@@ -14,6 +15,10 @@
     "watson-developer-cloud": "^3.12.0"
   },
   "devDependencies": {
+    "foreman": "^3.0.1",
     "nodemon": "^1.18.4"
+  },
+  "engines": {
+    "node": "8.12.0"
   }
 }
