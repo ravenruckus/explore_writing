@@ -47,7 +47,6 @@ toneAnalyzer.tone(toneParams, function (error, toneAnalysis){
 
 app.get('/api/test_json', (req, res, next) => {
     const jsonData = JSON.parse(fs.readFileSync('data/data.json'))
-    //sending back emotional tone for document
     const documentTones = jsonData.document_tone.tone_categories[0] 
     const sentences = jsonData.sentences_tone
     

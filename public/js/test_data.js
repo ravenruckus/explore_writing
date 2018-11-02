@@ -1,6 +1,6 @@
 (function() {
 
-
+ 
 
     $("#testButton").on('click', function() {
         event.preventDefault()
@@ -31,7 +31,6 @@
                 data: {
                     labels: toneNames,
                     datasets: [{
-                        label: 'Document Emotion Scores',
                         data: toneScores,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.5)',
@@ -52,6 +51,9 @@
                     
                 },
                 options: {
+                    legend: {
+                        display: false
+                    },
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -71,6 +73,7 @@
         const fearScores = []
         const joyScores = []
         const sadnessScores = []
+        const sentencesText = []
 
         $.each(jsonFileData[1], function(index, sentenceObj) {
             sentenceIds.push(sentenceObj.sentence_id)
@@ -79,11 +82,8 @@
             fearScores.push(sentenceObj.tone_categories[0].tones[2].score)
             joyScores.push(sentenceObj.tone_categories[0].tones[3].score)
             sadnessScores.push(sentenceObj.tone_categories[0].tones[4].score)
+            sentencesText.push(sentenceObj.text)
         })
-
-        console.log(sentenceIds)
-        console.log('angerScores', angerScores)
-        console.log('disgustScores', disgustScores)
 
         const sentenceChart = new Chart(ctx2, {
             type: 'horizontalBar',
@@ -92,38 +92,48 @@
                 datasets: [{
                     label: 'Anger',
                     data: angerScores,
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    hoverBackgroundColor: 'pink'
+                    backgroundColor: 'hsla(340, 100%, 80%, .75)'
+                    // hoverBackgroundColor: 'hsla(340, 50%, 8%, .4)'
                 },
                 {
                     label: 'Disgust',
                     data: disgustScores,
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                    backgroundColor: 'hsla(240, 100%, 80%, .7)'
+                    // hoverBackgroundColor: 'hsla(240, 50%, 8%, .4)'
+
                 },
                 {
                     label: 'Fear',
                     data: fearScores,
-                    backgroundColor: 'rgba(255, 206, 86, 0.5)'
+                    backgroundColor: 'hsla(50, 100%, 80%, .7)'
+                    // hoverBackgroundColor: 'hsla(50, 50%, 8%, .4)'
                 },
                 {
                     label: 'Joy',
                     data: joyScores,
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)'
+                    backgroundColor: 'hsla(180, 100%, 80%, .7)'
+                    // hoverBackgroundColor: 'hsla(180, 50%, 8%, .4)'
                 },
                 {
                     label: 'Sadness',
                     data: sadnessScores,
-                    backgroundColor: 'rgba(153, 102, 255, 0.5)'
+                    backgroundColor: 'hsla(280, 100%, 80%, .7)'
+                    // hoverBackgroundColor: 'hsla(280, 50%, 8%, .4)'
                 }
             ]
         },
             options: {
-                title: {
-                    display: true,
-                    text: 'Sentence Emotion Scores'
+                onClick: function(evt) {
+
+                    var activePoints = sentenceChart.getElementsAtEvent(evt)
+                 
+                    if(activePoints[0]) {
+                        $("#sentenceText").text(sentencesText[activePoints[0]._index])
+                    }
+
                 },
                 tooltips: {
-                    titleFontSize: 12
+                    titleFontSize: 18
                 },
                 scales: {
                     xAxes: [{
@@ -140,6 +150,6 @@
 
         })
 
-    })
+    })    
 
 })()
