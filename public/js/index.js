@@ -1,10 +1,12 @@
 (function() {
     'use strict'
 
-    const ctx = $("#myChart")
 
              $("button[type='submit']").on('click', function() {
                 event.preventDefault()
+
+                const ctx = $("#myChart")
+
 
                 const userText = $("textarea").val().trim()
 
@@ -21,17 +23,7 @@
                $.ajax(options)
                 .done((jsonFileData) => {
                     // add a loading image
-
-                    //category title
-                    $("#watsonData").append($("<h3>").text(jsonFileData.category_name)) 
                     
-                    const $ul =  $("<ul>")
-                    $.each(jsonFileData.tones, function(index, value) {
-                        $ul.append($("<li>").text(value.tone_name + ' ').append($("<span>").text(value.score)))
-                    })
-                    
-                    $("#watsonData").append($ul)
-
                     const toneNames = []
                     const toneScores = []
 
@@ -68,7 +60,11 @@
                         },
                         options: {
                             scales: {
+                                xAxes: [{
+                                    stacked: true
+                                }],
                                 yAxes: [{
+                                    stacked: true,
                                     ticks: {
                                         beginAtZero:true
                                     }
