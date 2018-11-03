@@ -26,22 +26,25 @@ const toneAnalyzer = new ToneAnalyzerV3({
 
   
 app.post('/api/analyze_text', (req, res, next) => {
+    
     const { userText } = req.body
-    console.log('req.body', userText)
 
     const toneParams = {
     'tone_input': { 'text': userText},
     'content_type': 'application/json'
    }
 
-toneAnalyzer.tone(toneParams, function (error, toneAnalysis){
-    if (error) {
-        console.log(error)
-    } else {
-        console.log('JSON.stringify(toneAnalysis, null, 2)', JSON.stringify(toneAnalysis, null, 2))
-        res.send(toneAnalysis.document_tone.tone_categories[0])
-    }
-})
+    toneAnalyzer.tone(toneParams, function (error, toneAnalysis){
+        if (error) {
+            console.log(error)
+        } else {
+            
+            const documentTones = toneAnalysis.document_tone.tone_categories[0] 
+            const sentences = toneAnalysis.sentences_tone
+        
+            res.send([documentTones, sentences])
+        }
+    })
 })
 
 

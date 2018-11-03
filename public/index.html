@@ -28,19 +28,19 @@
             
             <section class="row">
                 
-                <div class="col-md-4 d-flex align-items-center">
+                <div class="col-md-4 d-flex align-items-center tone_areas">
                     <div id="document_tones" class="document_tones hide" style="width: 100%">
                         <h4 class="text-center">Whole Document Tone</h4>
                         <canvas id="myChart" width="200" height="200"></canvas>
                     </div>
                 </div>
 
-                <div class="col-md-5  align-items-center hide" id="sentenceData">
+                <div class="col-md-5  align-items-center hide tone_areas" id="sentenceData">
                     <h4 class="text-center">Individual Sentence Tones - <small class="text-muted">Click bars to view text.</small></h4>
                     <canvas id="sentenceChart" width="200" height="200"></canvas>
                 </div>
 
-                <div class="col-md-3 d-flex align-items-center">
+                <div class="col-md-3 d-flex align-items-center tone_areas">
                     <p class="text-center" style="font-size: 1.3rem" id="sentenceText"></p>
                 </div>
 
@@ -60,10 +60,10 @@
             </div>
 
         </div>        
-
-        <form>
+<!-- 
+         <form>
             <button id="testButton" style="margin-top: 15px;">Test For formating of data</button>
-        </form>
+        </form> -->
 
     </body>
 </html>

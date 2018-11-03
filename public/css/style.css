@@ -5,3 +5,11 @@
 .hide {
     display: none;
 }
+
+@media (max-width: 767.98px) {
+
+    .tone_areas  {
+        margin-bottom: 50px;
+    }
+
+}
